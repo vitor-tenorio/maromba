@@ -2,18 +2,23 @@
 #include <iostream>
 #include <GL/glut.h>
 #include "casa.c"
+#include "barra.c"
+#include <math.h>
 
 
 GLfloat horzangle = -45.0, vertangle = 30.0, distance = -3.0;
 
-void RenderScene(void)
+void display(void)
 {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glTranslatef(0.0f, 0.0f, distance);
     glRotatef(vertangle, 1.0f, 0.0f, 0.0f);
     glRotatef(horzangle, 0.0f, 1.0f, 0.0f);
-    montaCasa(); // Somente para teste
+    glColor3f(1.0f, 0.0f, 0.0f); // Define a cor cinza para o cilindro
+    //montaCasa(); // Somente para teste
+    montaBarra();
     glFlush();
     glutSwapBuffers();
 }
@@ -55,6 +60,14 @@ void KeyboardFunc(unsigned char key, int x, int y)
     glutPostRedisplay();
 }
 
+void init(void) {
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_DEPTH_TEST);
+}
+
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
@@ -62,10 +75,11 @@ int main(int argc, char *argv[])
     glutInitWindowSize(500, 500);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Marombinha");
+    init();
     glutReshapeFunc(ChangeSize);
     glutKeyboardFunc(KeyboardFunc);
     glutSpecialFunc(SpecialKeys);
-    glutDisplayFunc(RenderScene);
+    glutDisplayFunc(display);
     glutMainLoop();
     return 0;
 }
