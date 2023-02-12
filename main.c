@@ -10,13 +10,13 @@ GLfloat horzangle = -45.0, vertangle = 30.0, distance = -3.0;
 
 void display(void)
 {
+    glEnable (GL_COLOR_MATERIAL);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glTranslatef(0.0f, 0.0f, distance);
     glRotatef(vertangle, 1.0f, 0.0f, 0.0f);
     glRotatef(horzangle, 0.0f, 1.0f, 0.0f);
-    glColor3f(1.0f, 0.0f, 0.0f); // Define a cor cinza para o cilindro
     //montaCasa(); // Somente para teste
     montaBarra();
     glFlush();
@@ -33,7 +33,6 @@ void ChangeSize(GLsizei width, GLsizei height)
 
 void SpecialKeys(int key, int x, int y)
 {
-
     if (key == GLUT_KEY_UP)
         vertangle -= 5;
 

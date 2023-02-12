@@ -8,6 +8,7 @@ void montaBarra() {
     gluQuadricDrawStyle(cylinder, GLU_FILL);
     
     glTranslatef(-1.0f, -1.0f, -1.0f);
+    glColor3f(0.3f, 0.3f, 0.3f);
     gluCylinder(cylinder, 0.05, 0.05, 2.0, 20, 20); // Desenha a barra
 
     glTranslatef(0.0f, 0.0f, 0.2f);
