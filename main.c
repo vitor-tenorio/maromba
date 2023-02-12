@@ -3,6 +3,7 @@
 #include <GL/glut.h>
 #include "casa.c"
 #include "barra.c"
+#include "anilha.c"
 #include <math.h>
 
 
@@ -19,6 +20,7 @@ void display(void)
     glRotatef(horzangle, 0.0f, 1.0f, 0.0f);
     //montaCasa(); // Somente para teste
     montaBarra();
+    montaAnilha();
     glFlush();
     glutSwapBuffers();
 }
