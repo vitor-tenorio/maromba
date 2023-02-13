@@ -4,6 +4,7 @@
 #include "casa.c"
 #include "barra.c"
 #include "anilha.c"
+#include "banco.c"
 #include <math.h>
 
 
@@ -21,6 +22,7 @@ void display(void)
     //montaCasa(); // Somente para teste
     montaBarra();
     montaAnilha();
+    //montaBanco();
     glFlush();
     glutSwapBuffers();
 }

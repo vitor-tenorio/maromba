@@ -1,18 +1,35 @@
-void montaAnilha() {
-    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+#include <math.h>
 
+void drawCircle(float radius, int numOfSides)
+{
+    int i;
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex3f(0, 0, 0);  // Centro do círculo
+        for (i = 0; i <= numOfSides; i++)
+        {
+            float angle = 2 * M_PI * i / numOfSides;
+            glVertex3f(radius * cos(angle), radius * sin(angle), 0);
+        }
+    glEnd();
+}
+
+void montaAnilha() {
     GLUquadricObj *cylinder;
     cylinder = gluNewQuadric();
     gluQuadricDrawStyle(cylinder, GLU_FILL);
 
     glTranslatef(0.0f, 0.0f, 0.2f);
     glColor3f(1.0f, 0.0f, 0.0f);
-    gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40); // Desenha uma anilha
+    drawCircle(0.2, 20);  // Desenha a base do cilindro
+    gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40);
+    glTranslatef(0.0f, 0.0f, 0.1f);
+    drawCircle(0.2, 20);  // Desenha a base do cilindro
 
     glTranslatef(0.0f, 0.0f, 1.5f);
-    gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40); // Desenha uma anilha
+    drawCircle(0.2, 20);  // Desenha o topo do cilindro
+    gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40);
+    glTranslatef(0.0f, 0.0f, 0.1f);
+    drawCircle(0.2, 20);
 
-
-    //gluQuadricDrawStyle(cylinder, GLU_FILL);
-    //gluCylinder(cylinder, 0.05, 0.05, 2.0, 20, 20); // Desenha o cilindro
+    glutSwapBuffers();
 }
