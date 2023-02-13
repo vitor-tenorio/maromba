@@ -22,7 +22,7 @@ void display(void)
     //montaCasa(); // Somente para teste
     montaBarra();
     montaAnilha();
-    //montaBanco();
+    montaBanco();
     glFlush();
     glutSwapBuffers();
 }

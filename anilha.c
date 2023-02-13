@@ -20,13 +20,13 @@ void montaAnilha() {
 
     glTranslatef(0.0f, 0.0f, 0.2f);
     glColor3f(1.0f, 0.0f, 0.0f);
-    drawCircle(0.2, 20);  // Desenha a base do cilindro
+    drawCircle(0.2, 20);
     gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40);
     glTranslatef(0.0f, 0.0f, 0.1f);
-    drawCircle(0.2, 20);  // Desenha a base do cilindro
+    drawCircle(0.2, 20);
 
-    glTranslatef(0.0f, 0.0f, 1.5f);
-    drawCircle(0.2, 20);  // Desenha o topo do cilindro
+    glTranslatef(0.0f, 0.0f, 1.4f);
+    drawCircle(0.2, 20);
     gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40);
     glTranslatef(0.0f, 0.0f, 0.1f);
     drawCircle(0.2, 20);
