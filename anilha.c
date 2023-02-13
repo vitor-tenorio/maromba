@@ -30,6 +30,4 @@ void montaAnilha() {
     gluCylinder(cylinder, 0.2, 0.2, 0.1, 20, 40);
     glTranslatef(0.0f, 0.0f, 0.1f);
     drawCircle(0.2, 20);
-
-    glutSwapBuffers();
 }
