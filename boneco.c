@@ -28,5 +28,5 @@ void montaBoneco() {
    glutSolidSphere(0.2, 20, 20);
 
    glColor3f(0.63, 0.13, 0.94);
-    montaCorpo();
+    //montaCorpo();
 }
