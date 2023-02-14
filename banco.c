@@ -1,3 +1,60 @@
+void montaApoios() {
+    glColor3f(0.4, 0.4, 0.4);  // Define a cor como um cinza azulado
+    
+    glBegin(GL_QUADS);
+        // Face frontal
+        glVertex3f(0.5, -1.0, -0.8);
+        glVertex3f(0.7, -1.0, -0.8);
+        glVertex3f(0.7, -0.5, -0.8);
+        glVertex3f(0.5, -0.5, -0.8);
+
+        // Face frontal
+        glVertex3f(0.5, -1.0, -0.7);
+        glVertex3f(0.7, -1.0, -0.7);
+        glVertex3f(0.7, -0.5, -0.7);
+        glVertex3f(0.5, -0.5, -0.7);
+
+        // Face frontal
+        glVertex3f(0.5, -1.0, -0.7);
+        glVertex3f(0.5, -0.5, -0.7);
+        glVertex3f(0.5, -0.5, -0.8);
+        glVertex3f(0.5, -1.0, -0.8);
+
+        // Face frontal
+        glVertex3f(0.7, -1.0, -0.7);
+        glVertex3f(0.7, -0.5, -0.7);
+        glVertex3f(0.7, -0.5, -0.8);
+        glVertex3f(0.7, -1.0, -0.8);
+    glEnd();
+
+        
+    glBegin(GL_QUADS);
+        // Face frontal
+        glVertex3f(-0.7, -1.0, -0.8);
+        glVertex3f(-0.5, -1.0, -0.8);
+        glVertex3f(-0.5, -0.5, -0.8);
+        glVertex3f(-0.7, -0.5, -0.8);
+
+        // Face frontal
+        glVertex3f(-0.7, -1.0, -0.7);
+        glVertex3f(-0.5, -1.0, -0.7);
+        glVertex3f(-0.5, -0.5, -0.7);
+        glVertex3f(-0.7, -0.5, -0.7);
+
+        // Face frontal
+        glVertex3f(-0.7, -1.0, -0.7);
+        glVertex3f(-0.7, -0.5, -0.7);
+        glVertex3f(-0.7, -0.5, -0.8);
+        glVertex3f(-0.7, -1.0, -0.8);
+
+        // Face frontal
+        glVertex3f(-0.5, -1.0, -0.7);
+        glVertex3f(-0.5, -0.5, -0.7);
+        glVertex3f(-0.5, -0.5, -0.8);
+        glVertex3f(-0.5, -1.0, -0.8);
+    glEnd();
+}
+
 void montaBanco()
 {
     glTranslatef(0.5f, 0.0f, 0.0f);
@@ -40,4 +97,5 @@ void montaBanco()
         glVertex3f(1.0, -0.6, -0.5);
         glVertex3f(-1.0, -0.6, -0.5);
     glEnd();
+    montaApoios();
 }

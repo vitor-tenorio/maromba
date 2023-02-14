@@ -66,10 +66,11 @@ void KeyboardFunc(unsigned char key, int x, int y)
 }
 
 void init(void) {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // define a cor de fundo como branco
+    glClear(GL_COLOR_BUFFER_BIT); // limpa a janela com a cor de fundo    
     glShadeModel(GL_SMOOTH);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    //glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHT0);
     glEnable(GL_DEPTH_TEST);
 }
 

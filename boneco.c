@@ -2,27 +2,27 @@ void montaCorpo() {
     glBegin(GL_QUADS);
         // Face superior
         glVertex3f(0.2, 0, -0.3);
-        glVertex3f(1.0, 0, -0.3);
-        glVertex3f(1.0, 0, 0.3);
+        glVertex3f(1.2, 0, -0.3);
+        glVertex3f(1.2, 0, 0.3);
         glVertex3f(0.2, 0, 0.3);
 
         // Face inferior
         glVertex3f(0.2, -0.1, -0.3);
-        glVertex3f(1.0, -0.1, -0.3);
-        glVertex3f(1.0, -0.1, 0.3);
+        glVertex3f(1.2, -0.1, -0.3);
+        glVertex3f(1.2, -0.1, 0.3);
         glVertex3f(0.2, -0.1, 0.3);
 
         glColor3f(0.50, 0.40, 0.30);
         // Face frontal
         glVertex3f(0.2, 0, 0.3);
-        glVertex3f(1.0, 0, 0.3);
-        glVertex3f(1.0, -0.1, 0.3);
+        glVertex3f(1.2, 0, 0.3);
+        glVertex3f(1.2, -0.1, 0.3);
         glVertex3f(0.2, -0.1, 0.3);
         
         // Face traseira
         glVertex3f(0.2, 0, -0.3);
-        glVertex3f(1.0, 0, -0.3);
-        glVertex3f(1.0, -0.1, -0.3);
+        glVertex3f(1.2, 0, -0.3);
+        glVertex3f(1.2, -0.1, -0.3);
         glVertex3f(0.2, -0.1, -0.3);
 
         // Face direita
@@ -32,10 +32,10 @@ void montaCorpo() {
         glVertex3f(0.2, -0.1, -0.3);
 
         // Face esquerda
-        glVertex3f(1.0, 0, -0.3);
-        glVertex3f(1.0, 0, 0.3);
-        glVertex3f(1.0, -0.1, 0.3);
-        glVertex3f(1.0, -0.1, -0.3);
+        glVertex3f(1.2, 0, -0.3);
+        glVertex3f(1.2, 0, 0.3);
+        glVertex3f(1.2, -0.1, 0.3);
+        glVertex3f(1.2, -0.1, -0.3);
     glEnd();
 }
 
