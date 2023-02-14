@@ -5,6 +5,7 @@
 #include "barra.c"
 #include "anilha.c"
 #include "banco.c"
+#include "boneco.c"
 #include <math.h>
 
 
@@ -23,6 +24,7 @@ void display(void)
     montaBarra();
     montaAnilha();
     montaBanco();
+    montaBoneco();
     glFlush();
     glutSwapBuffers();
 }
