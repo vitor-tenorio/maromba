@@ -1,0 +1,1 @@
+g++ -o executavel main.cpp -lglut -lGLU -lGL -lm && ./executavel
