@@ -5,11 +5,11 @@
 #include "barra.cpp"
 #include "anilha.c"
 #include "banco.cpp"
-#include "boneco.c"
+#include "boneco.cpp"
 #include "retangulo.cpp"
 #include <math.h>
 
-GLfloat horzangle = 90, vertangle = 0, dist = -7.0;
+GLfloat horzangle = 0, vertangle = 0, dist = -7.0;
 
 void display(void)
 {
@@ -20,15 +20,15 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glTranslatef(0.0f, 0.0f, dist);
-    glRotatef(90, 0.0f, 0.0f, 1.0f);
+    glRotatef(180, 0.0f, 0.0f, 1.0f);
     glRotatef(vertangle, 1.0f, 0.0f, 0.0f);
-    glRotatef(horzangle, 0.0f, 1.0f, 0.0f);
+    glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
     montaBarra();
     //  montaAnilha();
     montaBanco();
-    //  montaBoneco();
+    montaBoneco();
 
     glFlush();
     glutSwapBuffers();
