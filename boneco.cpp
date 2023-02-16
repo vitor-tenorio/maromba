@@ -16,20 +16,30 @@ void montaTorso() {
 
 void montaBracos(bool mouseClicked) {
     Cor vermelho = Cor(100, 0, 0);
-    Retangulo braco1 = Retangulo(Coordenada(750, 380, 450), vermelho, 180, 180, 600);
-    braco1.desenhar(220, 0, 1, 0);
-    Retangulo antebraco1 = Retangulo(Coordenada(835, 380, 700), vermelho, 180, 180, 620);
-    antebraco1.desenhar(0, 0, 1, 0);
+    if (!mouseClicked) {
+        Retangulo braco1 = Retangulo(Coordenada(750, 380, 450), vermelho, 180, 180, 600);
+        braco1.desenhar(220, 0, 1, 0);
+        Retangulo antebraco1 = Retangulo(Coordenada(835, 380, 700), vermelho, 180, 180, 620);
+        antebraco1.desenhar(0, 0, 1, 0);
 
-    if (mouseClicked)
-    {
-        glTranslatef(0, -0.2, 0);
+        Retangulo braco2 = Retangulo(Coordenada(250, 380, 450), vermelho, 180, 180, 600);
+        braco2.desenhar(140, 0, 1, 0);
+        Retangulo antebraco2 = Retangulo(Coordenada(165, 380, 700), vermelho, 180, 180, 620);
+        antebraco2.desenhar(0, 0, 1, 0);
+    
+    } else {
+        glTranslatef(0, 0, -0.4);
+        Retangulo braco1 = Retangulo(Coordenada(750, 380, 450), vermelho, 180, 180, 600);
+        braco1.desenhar(-220, 0, 1, 0);
+        Retangulo braco2 = Retangulo(Coordenada(250, 380, 450), vermelho, 180, 180, 600);
+        braco2.desenhar(-140, 0, 1, 0);
+
+        glTranslatef(0, 0, -0.4);
+        Retangulo antebraco1 = Retangulo(Coordenada(835, 380, 700), vermelho, 180, 180, 620);
+        antebraco1.desenhar(0, 0, 1, 0);        
+        Retangulo antebraco2 = Retangulo(Coordenada(165, 380, 700), vermelho, 180, 180, 620);
+        antebraco2.desenhar(0, 0, 1, 0);
     }
-
-    Retangulo braco2 = Retangulo(Coordenada(250, 380, 450), vermelho, 180, 180, 600);
-    braco2.desenhar(140, 0, 1, 0);
-    Retangulo antebraco2 = Retangulo(Coordenada(165, 380, 700), vermelho, 180, 180, 620);
-    antebraco2.desenhar(0, 0, 1, 0);
 }
 
 void montaPernas() {
