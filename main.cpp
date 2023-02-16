@@ -16,6 +16,7 @@ bool apagaLuz = true;
 
 GLfloat horzangle = 0, vertangle = 30, dist = -6.1;
 bool mouseClicked = false;
+int heightIndex = 0;
 
 void mouseCallback(int button, int state, int x, int y)
 {
@@ -56,7 +57,7 @@ void display(void)
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
-    montaBarra(mouseClicked);
+    montaBarra(mouseClicked, heightIndex);
     //  montaAnilha();
     montaBanco();
     montaBoneco(mouseClicked);
@@ -106,6 +107,13 @@ void KeyboardFunc(unsigned char key, int x, int y)
         break;
     case 'a':
         apagaLuz = !apagaLuz;
+        break;
+    case 32: // Barra de espaço
+        if (heightIndex == 3) {
+            heightIndex = 0;
+        } else {
+            heightIndex += 1;
+        }
         break;
     }
 
