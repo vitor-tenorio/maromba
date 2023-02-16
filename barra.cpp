@@ -20,9 +20,8 @@ void montaBarra(bool mouseClicked)
 
     Cor prata = Cor(128, 128, 128);
     int altura = 167;
-    if (mouseClicked) {
+    if (mouseClicked)
         altura = 525;
-    }
-    Cilindro barra = Cilindro(Coordenada(altura, 380, 0), prata, 100, 100, 2000);
+    Cilindro barra = Cilindro(Coordenada(altura, 380, -250), prata, 100, 100, 3000);
     barra.desenhar(90, 0, 1, 0);
 }

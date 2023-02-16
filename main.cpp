@@ -34,18 +34,15 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     float luzDifusa[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    // float luzEspecular[] = {0.8f, 0.8f, 0.8f, 1.0f};
-    float posicaoLuz[] = {180.0f, 180.0f, 180.0f, 1.0f};
+    float posicaoLuz[] = {50.0f, 50.0f, 50.0f, 1.0f};
     GLfloat mat_shininess[] = {80.0};
     glLightfv(GL_LIGHT1, GL_DIFFUSE, luzDifusa);
-    // glLightfv(GL_LIGHT2, GL_SPECULAR, luzEspecular);
     glLightfv(GL_LIGHT1, GL_POSITION, posicaoLuz);
     glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuz);
     GLfloat cor[] = {1.0, 1.0, 1.0, 0.5};
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
     glMaterialfv(GL_FRONT, GL_DIFFUSE, cor);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, cor);
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 
     if (!apagaLuz)
@@ -64,6 +61,7 @@ void display(void)
     montaBanco();
     montaBoneco(mouseClicked);
 
+    glPopMatrix();
     glFlush();
     glutSwapBuffers();
 }
@@ -122,6 +120,8 @@ void init(void)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    GLfloat luzAmbiente[] = {0.8f, 0.8f, 0.8f, 1.0f};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);
 }
 
 int main(int argc, char *argv[])
