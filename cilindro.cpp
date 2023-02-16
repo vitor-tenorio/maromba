@@ -3,10 +3,7 @@
 
 #include "coordenada.cpp"
 #include "cor.cpp"
-#include <iostream>
 #include <GL/glut.h>
-
-using namespace std;
 
 class Cilindro
 {
@@ -38,9 +35,6 @@ public:
         GLUquadricObj *cilindro = gluNewQuadric();
         gluQuadricDrawStyle(cilindro, GLU_FILL);
         gluCylinder(cilindro, cBase, cTopo, cAltura, 20, 20);
-        cout << cBase << endl;
-        cout << cTopo << endl;
-        cout << cAltura << endl;
         gluDeleteQuadric(cilindro);
         glPopMatrix();
     }
