@@ -21,7 +21,7 @@ void montaBarra(bool flexaoFeita, int plateIndex)
     Cor prata = Cor(128, 128, 128);
     int altura = 167;
     if (flexaoFeita)
-        altura = 525;
+        altura = 550;
     Cilindro barra = Cilindro(Coordenada(altura, 380, -250), prata, 100, 100, 3000);
     barra.desenhar(90, 0, 1, 0);
 
@@ -30,20 +30,21 @@ void montaBarra(bool flexaoFeita, int plateIndex)
     Cor cor;
     int alturaAnilha;
 
-    Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), vermelho, 750, 750, 75);    
+    Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), vermelho, 750, 750, 75);
     glPushMatrix();
-    for (int i = 0; i < plateIndex; i++) {
-        anilha1.desenhar(90, 0, 1, 0);        
+    for (int i = 0; i < plateIndex; i++)
+    {
+        anilha1.desenhar(90, 0, 1, 0);
         glTranslatef(-0.15, 0, 0);
     }
     glPopMatrix();
 
     Cilindro anilha2 = Cilindro(Coordenada(altura, 380, 1000), vermelho, 750, 750, 75);
     glPushMatrix();
-    for (int i = 0; i < plateIndex; i++) {
-        anilha2.desenhar(90, 0, 1, 0);        
+    for (int i = 0; i < plateIndex; i++)
+    {
+        anilha2.desenhar(90, 0, 1, 0);
         glTranslatef(0.15, 0, 0);
     }
     glPopMatrix();
-
 }
