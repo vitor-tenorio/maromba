@@ -15,14 +15,16 @@ void montaTorso(bool mouseClicked)
     Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, 700, 150);
     corpo.desenhar(0, 0, 0, 0);
 
-    int larguraPeito = mouseClicked ? 500 : 800;
-    int alturaPeito = mouseClicked ? 800 : 500;
+    int larguraPeito = mouseClicked ? 250 : 290;
+    int alturaPeito = mouseClicked ? 90 : 50;
 
-    Retangulo peito1 = Retangulo(Coordenada(750, 500, 480), azul, 200, larguraPeito, alturaPeito);
+    Cor vermelho = Cor(200, 0, 0);
+
+    Retangulo peito1 = Retangulo(Coordenada(600, 380, 400), vermelho, 200, larguraPeito, alturaPeito);
     peito1.desenhar(0, 0, 0, 0);
 
-    // Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, larguraPeito, alturaPeito);
-    // corpo.desenhar(0, 0, 0, 0);
+    Retangulo peito2 = Retangulo(Coordenada(400, 380, 400), vermelho, 200, larguraPeito, alturaPeito);
+    peito2.desenhar(0, 0, 0, 0);
 }
 
 void montaBracos(bool mouseClicked)
