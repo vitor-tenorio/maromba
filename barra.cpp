@@ -3,7 +3,7 @@
 #include "retangulo.cpp"
 #include "cilindro.cpp"
 
-void montaBarra(bool mouseClicked, int plateIndex)
+void montaBarra(bool flexaoFeita, int plateIndex)
 {
     Cor preto = Cor(0, 0, 0);
     Cilindro apoio1 = Cilindro(Coordenada(800, 200, 100), preto, 200, 200, 1600);
@@ -20,7 +20,7 @@ void montaBarra(bool mouseClicked, int plateIndex)
 
     Cor prata = Cor(128, 128, 128);
     int altura = 167;
-    if (mouseClicked)
+    if (flexaoFeita)
         altura = 525;
     Cilindro barra = Cilindro(Coordenada(altura, 380, -250), prata, 100, 100, 3000);
     barra.desenhar(90, 0, 1, 0);
@@ -29,7 +29,6 @@ void montaBarra(bool mouseClicked, int plateIndex)
     Cor azul = Cor(0, 0, 255);
     Cor cor;
     int alturaAnilha;
-
 
     Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), vermelho, 750, 750, 75);    
     glPushMatrix();
