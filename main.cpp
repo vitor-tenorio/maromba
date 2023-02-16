@@ -109,11 +109,10 @@ void KeyboardFunc(unsigned char key, int x, int y)
         apagaLuz = !apagaLuz;
         break;
     case 32: // Barra de espaço
-        if (heightIndex == 3) {
+        if (heightIndex == 3)
             heightIndex = 0;
-        } else {
+        else
             heightIndex += 1;
-        }
         break;
     }
 
