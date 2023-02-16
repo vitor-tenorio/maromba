@@ -1,22 +1,28 @@
-void montaCabeca()
+void montaCabeca(bool foiEnforcado)
 {
     Cor azul = Cor(0, 0, 145);
+    Cor vermelho = Cor(255, 0, 0);
     Coordenada coordenada = Coordenada(500, 125, 400);
     glPushMatrix();
     glTranslatef(coordenada.cX, coordenada.cY, coordenada.cZ);
-    glColor3f(azul.cR, azul.cG, azul.cB);
+    if (foiEnforcado) {
+        glColor3f(vermelho.cR, vermelho.cG, vermelho.cB);
+    } else {
+        glColor3f(azul.cR, azul.cG, azul.cB);
+    }
+    
     glutSolidSphere(0.2, 20, 20);
     glPopMatrix();
 }
 
-void montaTorso(bool mouseClicked)
+void montaTorso(bool flexaoFeita)
 {
     Cor azul = Cor(0, 0, 100);
     Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, 700, 150);
     corpo.desenhar(0, 0, 0, 0);
 
-    int larguraPeito = mouseClicked ? 250 : 290;
-    int alturaPeito = mouseClicked ? 90 : 50;
+    int larguraPeito = flexaoFeita ? 250 : 290;
+    int alturaPeito = flexaoFeita ? 90 : 50;
 
     Cor vermelho = Cor(200, 0, 0);
 
@@ -27,10 +33,10 @@ void montaTorso(bool mouseClicked)
     peito2.desenhar(0, 0, 0, 0);
 }
 
-void montaBracos(bool mouseClicked)
+void montaBracos(bool flexaoFeita)
 {
     Cor vermelho = Cor(100, 0, 0);
-    if (!mouseClicked)
+    if (!flexaoFeita)
     {
         Retangulo braco1 = Retangulo(Coordenada(750, 380, 450), vermelho, 180, 180, 600);
         braco1.desenhar(220, 0, 1, 0);
@@ -73,15 +79,15 @@ void montaPernas()
     canela2.desenhar(90, 1, 0, 0);
 }
 
-void montaBoneco(bool mouseClicked)
+void montaBoneco(bool flexaoFeita, bool foiEnforcado)
 {
     // glColor3f(0.96, 0.87, 0.70);
     // glTranslatef(-0.75f, -0.4f, -0.75f);
     // glRotatef(90, 0.0f, 1.0f, 0.0f);
     // glRotatef(90, 0.0f, 0.0f, 1.0f);
     // glTranslatef(-0.65, -0.25, 0);
-    montaCabeca();
-    montaTorso(mouseClicked);
+    montaCabeca(foiEnforcado);
+    montaTorso(flexaoFeita);
     montaPernas();
-    montaBracos(mouseClicked);
+    montaBracos(flexaoFeita);
 }

@@ -9,6 +9,8 @@
 #include "retangulo.cpp"
 #include <math.h>
 #include <stdbool.h>
+#include <ctime>
+#include <iostream>
 
 using namespace std;
 
@@ -21,18 +23,29 @@ int MAX_PLATES = 3;
 bool flexaoFeita = false;
 int cliques = 0;
 int cliquesNecessarios = 5;
+bool foiEnforcado = false;
+
+std::time_t start_time = std::time(nullptr);
 
 void mouseCallback(int button, int state, int x, int y)
 {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-    {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        if (cliques == 0 && !flexaoFeita) {
+            start_time = std::time(nullptr);
+        }
         cliques += 1;
-        if (cliques == cliquesNecessarios)
-        {
+        std::time_t now = std::time(nullptr);
+        double time_diff = std::difftime(now, start_time);
+        if (time_diff > 5) {
+            foiEnforcado = true;
+        } else if (cliques == cliquesNecessarios) {
             flexaoFeita = !flexaoFeita;
             cliques = 0;
+            if (!flexaoFeita) {
+                std::cout << "Feito em " << time_diff << " segundos" << std::endl;
+            }
         }
-        glutPostRedisplay();
+        glutPostRedisplay();    
     }
 }
 
@@ -66,10 +79,10 @@ void display(void)
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
-    montaBarra(flexaoFeita, plateIndex);
+    montaBarra(flexaoFeita, plateIndex, foiEnforcado);
     //  montaAnilha();
     montaBanco();
-    montaBoneco(flexaoFeita);
+    montaBoneco(flexaoFeita, foiEnforcado);
 
     glPopMatrix();
     glFlush();
@@ -116,6 +129,13 @@ void KeyboardFunc(unsigned char key, int x, int y)
         break;
     case 'a':
         apagaLuz = !apagaLuz;
+        break;
+    case 'r':
+        if (foiEnforcado) {
+            foiEnforcado = false;
+            cliques = 0;
+            flexaoFeita = false;
+        }
         break;
     case 32: // Barra de espaço
         if (plateIndex == MAX_PLATES)
