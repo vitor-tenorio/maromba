@@ -39,7 +39,12 @@ void montaCorpo() {
     glEnd();
 }
 
-void montaBracos() {
+void montaBracos(bool mouseClicked) {
+    if (mouseClicked)
+    {
+        glTranslatef(0, -0.2, 0);
+    }
+    
     glBegin(GL_QUADS);
         // Face frontal
         glVertex3f(0.3, 0.4, -0.4);
@@ -121,7 +126,7 @@ void montaBracos() {
     // glEnd();
 }
 
-void montaBoneco() {
+void montaBoneco(bool mouseClicked) {
     glColor3f(0.96, 0.87, 0.70);
     //glTranslatef(-0.75f, -0.4f, -0.75f);
     glRotatef(90, 0.0f, 1.0f, 0.0f);
@@ -129,8 +134,8 @@ void montaBoneco() {
     glTranslatef(-0.65, -0.25, 0);
     // Desenha a cabeça como uma esfera
     glutSolidSphere(0.2, 20, 20);
-    
+
     //glColor3f(0.63, 0.13, 0.94);
     montaCorpo();
-    montaBracos();
+    montaBracos(mouseClicked);
 }
