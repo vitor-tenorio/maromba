@@ -16,7 +16,8 @@ bool apagaLuz = true;
 
 GLfloat horzangle = 0, vertangle = 30, dist = -6.1;
 bool mouseClicked = false;
-int heightIndex = 0;
+int plateIndex = 0;
+int MAX_PLATES = 3;
 
 void mouseCallback(int button, int state, int x, int y)
 {
@@ -57,7 +58,7 @@ void display(void)
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
-    montaBarra(mouseClicked, heightIndex);
+    montaBarra(mouseClicked, plateIndex);
     //  montaAnilha();
     montaBanco();
     montaBoneco(mouseClicked);
@@ -75,22 +76,22 @@ void ChangeSize(GLsizei width, GLsizei height)
     gluPerspective(30.0, width / height, 1.0, 10.0);
 }
 
-// void SpecialKeys(int key, int x, int y)
-// {
-//     if (key == GLUT_KEY_UP)
-//         vertangle -= 5;
+void SpecialKeys(int key, int x, int y)
+{
+    if (key == GLUT_KEY_UP)
+        vertangle -= 5;
 
-//     if (key == GLUT_KEY_DOWN)
-//         vertangle += 5;
+    if (key == GLUT_KEY_DOWN)
+        vertangle += 5;
 
-//     if (key == GLUT_KEY_LEFT)
-//         horzangle -= 5;
+    if (key == GLUT_KEY_LEFT)
+        horzangle -= 5;
 
-//     if (key == GLUT_KEY_RIGHT)
-//         horzangle += 5;
+    if (key == GLUT_KEY_RIGHT)
+        horzangle += 5;
 
-//     glutPostRedisplay();
-// }
+    glutPostRedisplay();
+}
 
 void KeyboardFunc(unsigned char key, int x, int y)
 {
@@ -109,10 +110,10 @@ void KeyboardFunc(unsigned char key, int x, int y)
         apagaLuz = !apagaLuz;
         break;
     case 32: // Barra de espaço
-        if (heightIndex == 3)
-            heightIndex = 0;
+        if (plateIndex == MAX_PLATES)
+            plateIndex = 0;
         else
-            heightIndex += 1;
+            plateIndex += 1;
         break;
     }
 
@@ -142,7 +143,7 @@ int main(int argc, char *argv[])
     glutReshapeFunc(ChangeSize);
     glutMouseFunc(mouseCallback);
     glutKeyboardFunc(KeyboardFunc);
-    // glutSpecialFunc(SpecialKeys);
+    glutSpecialFunc(SpecialKeys);
     glutDisplayFunc(display);
     glutMainLoop();
     return 0;

@@ -3,7 +3,7 @@
 #include "retangulo.cpp"
 #include "cilindro.cpp"
 
-void montaBarra(bool mouseClicked, int heightIndex)
+void montaBarra(bool mouseClicked, int plateIndex)
 {
     Cor preto = Cor(0, 0, 0);
     Cilindro apoio1 = Cilindro(Coordenada(800, 200, 100), preto, 200, 200, 1600);
@@ -29,25 +29,22 @@ void montaBarra(bool mouseClicked, int heightIndex)
     Cor azul = Cor(0, 0, 255);
     Cor cor;
     int alturaAnilha;
-    switch (heightIndex) {
-        case 0:
-            cor = azul;
-            alturaAnilha = 500;
-            break;
-        case 1:
-            cor = vermelho;
-            alturaAnilha = 750;
-            break;
-        case 2:
-            cor = preto;
-            alturaAnilha = 1000;
-            break;
 
-        default:
-            break;
-    }  
-    Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), cor, alturaAnilha, alturaAnilha, 75);
-    anilha1.desenhar(90, 0, 1, 0);
-    Cilindro anilha2 = Cilindro(Coordenada(altura, 380, 1000), cor, alturaAnilha, alturaAnilha, 75);
-    anilha2.desenhar(90, 0, 1, 0);
+
+    Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), vermelho, 750, 750, 75);    
+    glPushMatrix();
+    for (int i = 0; i < plateIndex; i++) {
+        anilha1.desenhar(90, 0, 1, 0);        
+        glTranslatef(-0.15, 0, 0);
+    }
+    glPopMatrix();
+
+    Cilindro anilha2 = Cilindro(Coordenada(altura, 380, 1000), vermelho, 750, 750, 75);
+    glPushMatrix();
+    for (int i = 0; i < plateIndex; i++) {
+        anilha2.desenhar(90, 0, 1, 0);        
+        glTranslatef(0.15, 0, 0);
+    }
+    glPopMatrix();
+
 }
