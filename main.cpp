@@ -13,7 +13,6 @@ GLfloat horzangle = 0, vertangle = 0, dist = -7.0;
 
 void display(void)
 {
-
     glEnable(GL_COLOR_MATERIAL);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();

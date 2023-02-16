@@ -4,7 +4,6 @@
 
 void montaBanco()
 {
-
     Cor cinza = Cor(143, 143, 143);
     Retangulo apoio1 = Retangulo(Coordenada(500, 100, 200), cinza, 200, 200, 400);
     apoio1.desenhar(0, 0, 0, 0);

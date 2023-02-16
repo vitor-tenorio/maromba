@@ -29,40 +29,40 @@ public:
     void desenhar(float angulo, bool anguloX, bool anguloY, bool anguloZ)
     {
         glPushMatrix();
-        glRotatef(angulo, anguloX, anguloY, anguloZ);
         glTranslatef(centro.cX, centro.cY, centro.cZ);
+        glRotatef(angulo, anguloX, anguloY, anguloZ);
         glColor3f(cor.cR, cor.cG, cor.cB);
         glBegin(GL_QUADS);
-        // Face traseira
-        glVertex3f(-cLargura, -cAltura, -cProfundidade);
-        glVertex3f(cLargura, -cAltura, -cProfundidade);
-        glVertex3f(cLargura, cAltura, -cProfundidade);
-        glVertex3f(-cLargura, cAltura, -cProfundidade);
-        // Face frontal
-        glVertex3f(-cLargura, -cAltura, cProfundidade);
-        glVertex3f(cLargura, -cAltura, cProfundidade);
-        glVertex3f(cLargura, cAltura, cProfundidade);
-        glVertex3f(-cLargura, cAltura, cProfundidade);
-        // Face superior
-        glVertex3f(-cLargura, cAltura, -cProfundidade);
-        glVertex3f(cLargura, cAltura, -cProfundidade);
-        glVertex3f(cLargura, cAltura, cProfundidade);
-        glVertex3f(-cLargura, cAltura, cProfundidade);
-        // Face inferior
-        glVertex3f(-cLargura, -cAltura, -cProfundidade);
-        glVertex3f(cLargura, -cAltura, -cProfundidade);
-        glVertex3f(cLargura, -cAltura, cProfundidade);
-        glVertex3f(-cLargura, -cAltura, cProfundidade);
-        // Face esquerda
-        glVertex3f(-cLargura, -cAltura, -cProfundidade);
-        glVertex3f(-cLargura, cAltura, -cProfundidade);
-        glVertex3f(-cLargura, cAltura, cProfundidade);
-        glVertex3f(-cLargura, -cAltura, cProfundidade);
-        // Face direita
-        glVertex3f(cLargura, -cAltura, -cProfundidade);
-        glVertex3f(cLargura, cAltura, -cProfundidade);
-        glVertex3f(cLargura, cAltura, cProfundidade);
-        glVertex3f(cLargura, -cAltura, cProfundidade);
+            // Face traseira
+            glVertex3f(-cLargura, -cAltura, -cProfundidade);
+            glVertex3f(cLargura, -cAltura, -cProfundidade);
+            glVertex3f(cLargura, cAltura, -cProfundidade);
+            glVertex3f(-cLargura, cAltura, -cProfundidade);
+            // Face frontal
+            glVertex3f(-cLargura, -cAltura, cProfundidade);
+            glVertex3f(cLargura, -cAltura, cProfundidade);
+            glVertex3f(cLargura, cAltura, cProfundidade);
+            glVertex3f(-cLargura, cAltura, cProfundidade);
+            // Face superior
+            glVertex3f(-cLargura, cAltura, -cProfundidade);
+            glVertex3f(cLargura, cAltura, -cProfundidade);
+            glVertex3f(cLargura, cAltura, cProfundidade);
+            glVertex3f(-cLargura, cAltura, cProfundidade);
+            // Face inferior
+            glVertex3f(-cLargura, -cAltura, -cProfundidade);
+            glVertex3f(cLargura, -cAltura, -cProfundidade);
+            glVertex3f(cLargura, -cAltura, cProfundidade);
+            glVertex3f(-cLargura, -cAltura, cProfundidade);
+            // Face esquerda
+            glVertex3f(-cLargura, -cAltura, -cProfundidade);
+            glVertex3f(-cLargura, cAltura, -cProfundidade);
+            glVertex3f(-cLargura, cAltura, cProfundidade);
+            glVertex3f(-cLargura, -cAltura, cProfundidade);
+            // Face direita
+            glVertex3f(cLargura, -cAltura, -cProfundidade);
+            glVertex3f(cLargura, cAltura, -cProfundidade);
+            glVertex3f(cLargura, cAltura, cProfundidade);
+            glVertex3f(cLargura, -cAltura, cProfundidade);
         glEnd();
         glPopMatrix();
     }

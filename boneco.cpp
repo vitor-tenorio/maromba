@@ -1,136 +1,44 @@
-void montaCorpo() {
-    glBegin(GL_QUADS);
-        // Face superior
-        glVertex3f(0.2, 0, -0.3);
-        glVertex3f(1.2, 0, -0.3);
-        glVertex3f(1.2, 0, 0.3);
-        glVertex3f(0.2, 0, 0.3);
+void montaCabeca() {
+    Cor azul = Cor(0, 0, 145);
+    Coordenada coordenada = Coordenada(500, 125, 400);
+    glPushMatrix();
+        glTranslatef(coordenada.cX, coordenada.cY, coordenada.cZ);
+        glColor3f(azul.cR, azul.cG, azul.cB);
+        glutSolidSphere(0.2, 20, 20);
+    glPopMatrix();
+}
 
-        // Face inferior
-        glVertex3f(0.2, -0.1, -0.3);
-        glVertex3f(1.2, -0.1, -0.3);
-        glVertex3f(1.2, -0.1, 0.3);
-        glVertex3f(0.2, -0.1, 0.3);
-
-        glColor3f(0.50, 0.40, 0.30);
-        // Face frontal
-        glVertex3f(0.2, 0, 0.3);
-        glVertex3f(1.2, 0, 0.3);
-        glVertex3f(1.2, -0.1, 0.3);
-        glVertex3f(0.2, -0.1, 0.3);
-        
-        // Face traseira
-        glVertex3f(0.2, 0, -0.3);
-        glVertex3f(1.2, 0, -0.3);
-        glVertex3f(1.2, -0.1, -0.3);
-        glVertex3f(0.2, -0.1, -0.3);
-
-        // Face direita
-        glVertex3f(0.2, 0, -0.3);
-        glVertex3f(0.2, 0, 0.3);
-        glVertex3f(0.2, -0.1, 0.3);
-        glVertex3f(0.2, -0.1, -0.3);
-
-        // Face esquerda
-        glVertex3f(1.2, 0, -0.3);
-        glVertex3f(1.2, 0, 0.3);
-        glVertex3f(1.2, -0.1, 0.3);
-        glVertex3f(1.2, -0.1, -0.3);
-    glEnd();
+void montaTorso() {
+    Cor azul = Cor(0, 0, 100);
+    Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, 700, 150);
+    corpo.desenhar(0, 0, 0, 0);
 }
 
 void montaBracos() {
-    glBegin(GL_QUADS);
-        // Face frontal
-        glVertex3f(0.3, 0.4, -0.4);
-        glVertex3f(0.2, 0.4, -0.4);
-        glVertex3f(0.2, -0.1, -0.4);
-        glVertex3f(0.3, -0.1, -0.4);
+    Cor vermelho = Cor(100, 0, 0);
+    Retangulo braco1 = Retangulo(Coordenada(750, 380, 450), vermelho, 180, 180, 600);
+    braco1.desenhar(220, 0, 1, 0);
+    Retangulo antebraco1 = Retangulo(Coordenada(835, 380, 700), vermelho, 180, 180, 620);
+    antebraco1.desenhar(0, 0, 1, 0);
 
-        // Face frontal
-        glVertex3f(0.3, 0.4, -0.3);
-        glVertex3f(0.2, 0.4, -0.3);
-        glVertex3f(0.2, -0.1, -0.3);
-        glVertex3f(0.3, -0.1, -0.3);
+    Retangulo braco2 = Retangulo(Coordenada(250, 380, 450), vermelho, 180, 180, 600);
+    braco2.desenhar(140, 0, 1, 0);
+    Retangulo antebraco2 = Retangulo(Coordenada(165, 380, 700), vermelho, 180, 180, 620);
+    antebraco2.desenhar(0, 0, 1, 0);
+}
 
-        // Face frontal
-        glVertex3f(0.3, 0.4, -0.3);
-        glVertex3f(0.3, -0.1, -0.3);
-        glVertex3f(0.3, -0.1, -0.4);
-        glVertex3f(0.3, 0.4, -0.4);
-
-        // Face frontal
-        glVertex3f(0.2, 0.4, -0.3);
-        glVertex3f(0.2, -0.1, -0.3);
-        glVertex3f(0.2, -0.1, -0.4);
-        glVertex3f(0.2, 0.4, -0.4);
-    glEnd();
-
-    glBegin(GL_QUADS);
-        // Face frontal
-        glVertex3f(0.3, 0.4, 0.4);
-        glVertex3f(0.2, 0.4, 0.4);
-        glVertex3f(0.2, -0.1, 0.4);
-        glVertex3f(0.3, -0.1, 0.4);
-
-        // Face frontal
-        glVertex3f(0.3, 0.4, 0.3);
-        glVertex3f(0.2, 0.4, 0.3);
-        glVertex3f(0.2, -0.1, 0.3);
-        glVertex3f(0.3, -0.1, 0.3);
-
-        // Face frontal
-        glVertex3f(0.3, 0.4, 0.3);
-        glVertex3f(0.3, -0.1, 0.3);
-        glVertex3f(0.3, -0.1, 0.4);
-        glVertex3f(0.3, 0.4, 0.4);
-
-        // Face frontal
-        glVertex3f(0.2, 0.4, 0.3);
-        glVertex3f(0.2, 0, 0.3);
-        glVertex3f(0.2, 0, 0.4);
-        glVertex3f(0.2, 0.4, 0.4);
-    glEnd();
-
-
-    // glColor3f(0.96, 0.0, 0.0);
-    // glBegin(GL_QUADS);
-    //     // Face frontal
-    //     glVertex3f(0.9, 0.4, 0.05);
-    //     glVertex3f(1.0, 0.4, 0.05);
-    //     glVertex3f(1.0, -0.1, 0.05);
-    //     glVertex3f(0.9, -0.1, 0.05);
-
-    //     // Face frontal
-    //     glVertex3f(0.9, 0.4, -0.05);
-    //     glVertex3f(1.0, 0.4, -0.05);
-    //     glVertex3f(1.0, -0.1, -0.05);
-    //     glVertex3f(0.9, -0.1, -0.05);
-
-    //     // Face frontal
-    //     glVertex3f(0.9, 0.4, -0.05);
-    //     glVertex3f(0.9, -0.1, -0.05);
-    //     glVertex3f(0.9, -0.1, 0.05);
-    //     glVertex3f(0.9, 0.4, 0.05);
-
-    //     // Face frontal
-    //     glVertex3f(1.0, 0.4, -0.05);
-    //     glVertex3f(1.0, 0, -0.05);
-    //     glVertex3f(1.0, 0, 0.05);
-    //     glVertex3f(1.0, 0.4, 0.05);
-    // glEnd();
+void montaPernas() {
 }
 
 void montaBoneco() {
-    glColor3f(0.96, 0.87, 0.70);
+    // glColor3f(0.96, 0.87, 0.70);
     //glTranslatef(-0.75f, -0.4f, -0.75f);
-    glRotatef(90, 0.0f, 1.0f, 0.0f);
-    glRotatef(90, 0.0f, 0.0f, 1.0f);
-    glTranslatef(-0.65, -0.25, 0);
-    // Desenha a cabeça como uma esfera
-    glutSolidSphere(0.2, 20, 20);
-    
-    //glColor3f(0.63, 0.13, 0.94);
-    montaCorpo();
+    // glRotatef(90, 0.0f, 1.0f, 0.0f);
+    // glRotatef(90, 0.0f, 0.0f, 1.0f);
+    // glTranslatef(-0.65, -0.25, 0);
+    montaCabeca();
+    montaTorso();
     montaBracos();
+    montaPernas();
+    // montaBracos();
 }
