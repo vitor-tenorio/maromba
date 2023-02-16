@@ -22,10 +22,13 @@ bool flexaoFeita = false;
 int cliques = 0;
 int cliquesNecessarios = 5;
 
-void mouseCallback(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+void mouseCallback(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
         cliques += 1;
-        if (cliques == cliquesNecessarios) {
+        if (cliques == cliquesNecessarios)
+        {
             flexaoFeita = !flexaoFeita;
             cliques = 0;
         }
@@ -33,7 +36,8 @@ void mouseCallback(int button, int state, int x, int y) {
     }
 }
 
-void display(void) {
+void display(void)
+{
     glEnable(GL_COLOR_MATERIAL);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -72,14 +76,16 @@ void display(void) {
     glutSwapBuffers();
 }
 
-void ChangeSize(GLsizei width, GLsizei height) {
+void ChangeSize(GLsizei width, GLsizei height)
+{
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(30.0, width / height, 1.0, 10.0);
 }
 
-void SpecialKeys(int key, int x, int y) {
+void SpecialKeys(int key, int x, int y)
+{
     if (key == GLUT_KEY_UP)
         vertangle -= 5;
 
@@ -95,7 +101,8 @@ void SpecialKeys(int key, int x, int y) {
     glutPostRedisplay();
 }
 
-void KeyboardFunc(unsigned char key, int x, int y) {
+void KeyboardFunc(unsigned char key, int x, int y)
+{
     switch (key)
     {
     case 27:
@@ -115,6 +122,8 @@ void KeyboardFunc(unsigned char key, int x, int y) {
             plateIndex = 0;
         else
             plateIndex += 1;
+
+        cliquesNecessarios = (1 + plateIndex) * 5;
         break;
     }
 
