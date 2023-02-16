@@ -4,6 +4,7 @@
 #include "coordenada.cpp"
 #include "cor.cpp"
 #include <GL/glut.h>
+#include <math.h>
 
 class Cilindro
 {
@@ -34,9 +35,29 @@ public:
 
         GLUquadricObj *cilindro = gluNewQuadric();
         gluQuadricDrawStyle(cilindro, GLU_FILL);
+        drawCircle(cBase, 20);
+        glPushMatrix();
+        glTranslatef(0.0f, 0.0f, cAltura);
+        drawCircle(cBase, 20);
+        glPopMatrix();
+
         gluCylinder(cilindro, cBase, cTopo, cAltura, 20, 20);
         gluDeleteQuadric(cilindro);
         glPopMatrix();
+    }
+
+
+    void drawCircle(float radius, int numOfSides)
+    {
+        int i;
+        glBegin(GL_TRIANGLE_FAN);
+            glVertex3f(0, 0, 0);  // Centro do círculo
+            for (i = 0; i <= numOfSides; i++)
+            {
+                float angle = 2 * M_PI * i / numOfSides;
+                glVertex3f(radius * cos(angle), radius * sin(angle), 0);
+            }
+        glEnd();
     }
 };
 
