@@ -12,6 +12,6 @@ void montaBanco()
     apoio2.desenhar(0, 0, 0, 0);
 
     Cor preto = Cor(0, 0, 0);
-    Retangulo banco = Retangulo(Coordenada(500, 500, 300), preto, 2000, 800, 100);
+    Retangulo banco = Retangulo(Coordenada(500, 500, 300), preto, 2000, 600, 100);
     banco.desenhar(0, 0, 0, 0);
 }

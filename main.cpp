@@ -10,6 +10,14 @@
 #include <math.h>
 
 GLfloat horzangle = 0, vertangle = 0, dist = -7.0;
+bool mouseClicked = false;
+
+void mouseCallback(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        mouseClicked = !mouseClicked;
+        glutPostRedisplay();
+    }
+}
 
 void display(void)
 {
@@ -24,10 +32,10 @@ void display(void)
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
-    montaBarra();
+    montaBarra(mouseClicked);
     //  montaAnilha();
     montaBanco();
-    montaBoneco();
+    montaBoneco(mouseClicked);
 
     glFlush();
     glutSwapBuffers();
@@ -91,6 +99,7 @@ int main(int argc, char *argv[])
     glutCreateWindow("Marombinha");
     init();
     glutReshapeFunc(ChangeSize);
+    glutMouseFunc(mouseCallback);
     glutKeyboardFunc(KeyboardFunc);
     glutSpecialFunc(SpecialKeys);
     glutDisplayFunc(display);

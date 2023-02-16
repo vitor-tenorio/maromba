@@ -3,7 +3,7 @@
 #include "retangulo.cpp"
 #include "cilindro.cpp"
 
-void montaBarra()
+void montaBarra(bool mouseClicked)
 {
     Cor preto = Cor(0, 0, 0);
     Cilindro apoio1 = Cilindro(Coordenada(800, 200, 100), preto, 200, 200, 1600);
@@ -19,6 +19,10 @@ void montaBarra()
     baseBarra2.desenhar(20, 1, 0, 0);
 
     Cor prata = Cor(128, 128, 128);
-    Cilindro barra = Cilindro(Coordenada(160, 380, 0), prata, 100, 100, 2000);
+    int altura = 167;
+    if (mouseClicked) {
+        altura = 525;
+    }
+    Cilindro barra = Cilindro(Coordenada(altura, 380, 0), prata, 100, 100, 2000);
     barra.desenhar(90, 0, 1, 0);
 }
