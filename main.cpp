@@ -12,6 +12,40 @@
 
 using namespace std;
 
+#define stripedTextureWidth 32
+#define stripedTextureHeight 32
+static GLubyte stripedTexture[stripedTextureHeight][stripedTextureWidth][4];
+
+static GLfloat xequalzero[] = {1.0, 0.0, 0.0, 0.0};
+static GLfloat *currentCoeff;
+static GLenum currentPlane;
+static GLint currentGenMode;
+
+void createTexture(void)
+{
+    for (int i = 0; i < stripedTextureHeight; i++)
+    {
+        for (int j = 0; j < stripedTextureWidth; j++)
+        {
+            GLubyte cor;
+
+            if (i % 2 == 0 && j % 2 != 0)
+            {
+                cor = 0;
+            }
+            else
+            {
+                cor = 255;
+            }
+
+            stripedTexture[i][j][0] = cor;
+            stripedTexture[i][j][1] = cor;
+            stripedTexture[i][j][2] = cor;
+            stripedTexture[i][j][3] = (GLubyte)255;
+        }
+    }
+}
+
 bool apagaLuz = true;
 
 GLfloat horzangle = 0, vertangle = 30, dist = -6.1;
@@ -140,6 +174,23 @@ void init(void)
     glEnable(GL_LIGHT0);
     GLfloat luzAmbiente[] = {0.8f, 0.8f, 0.8f, 1.0f};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);
+
+    createTexture();
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+    glTexImage1D(GL_TEXTURE_1D, 0, 4, stripedTextureWidth,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE, stripedTexture);
+
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    currentCoeff = xequalzero;
+    currentGenMode = GL_OBJECT_LINEAR;
+    currentPlane = GL_OBJECT_PLANE;
+    glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, currentGenMode);
+    glTexGenfv(GL_S, currentPlane, currentCoeff);
 }
 
 int main(int argc, char *argv[])
