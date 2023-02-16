@@ -15,14 +15,21 @@ using namespace std;
 bool apagaLuz = true;
 
 GLfloat horzangle = 0, vertangle = 30, dist = -6.1;
-bool mouseClicked = false;
+bool flexaoFeita = false;
 int heightIndex = 0;
+int cliques = 0;
+int cliquesNecessarios = 5;
 
 void mouseCallback(int button, int state, int x, int y)
 {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
     {
-        mouseClicked = !mouseClicked;
+        cliques += 1;
+        if (cliques == cliquesNecessarios)
+        {
+            flexaoFeita = !flexaoFeita;
+            cliques = 0;
+        }
         glutPostRedisplay();
     }
 }
@@ -57,10 +64,10 @@ void display(void)
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
     //  montaCasa(); // Somente para teste
-    montaBarra(mouseClicked, heightIndex);
+    montaBarra(flexaoFeita, heightIndex);
     //  montaAnilha();
     montaBanco();
-    montaBoneco(mouseClicked);
+    montaBoneco(flexaoFeita);
 
     glPopMatrix();
     glFlush();
@@ -109,9 +116,12 @@ void KeyboardFunc(unsigned char key, int x, int y)
         apagaLuz = !apagaLuz;
         break;
     case 32: // Barra de espaço
-        if (heightIndex == 3) {
+        if (heightIndex == 3)
+        {
             heightIndex = 0;
-        } else {
+        }
+        else
+        {
             heightIndex += 1;
         }
         break;
