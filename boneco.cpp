@@ -9,11 +9,20 @@ void montaCabeca()
     glPopMatrix();
 }
 
-void montaTorso()
+void montaTorso(bool mouseClicked)
 {
     Cor azul = Cor(0, 0, 100);
     Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, 700, 150);
     corpo.desenhar(0, 0, 0, 0);
+
+    int larguraPeito = mouseClicked ? 500 : 800;
+    int alturaPeito = mouseClicked ? 800 : 500;
+
+    Retangulo peito1 = Retangulo(Coordenada(750, 500, 480), azul, 200, larguraPeito, alturaPeito);
+    peito1.desenhar(0, 0, 0, 0);
+
+    // Retangulo corpo = Retangulo(Coordenada(500, 480, 350), azul, 1100, larguraPeito, alturaPeito);
+    // corpo.desenhar(0, 0, 0, 0);
 }
 
 void montaBracos(bool mouseClicked)
@@ -70,7 +79,7 @@ void montaBoneco(bool mouseClicked)
     // glRotatef(90, 0.0f, 0.0f, 1.0f);
     // glTranslatef(-0.65, -0.25, 0);
     montaCabeca();
-    montaTorso();
+    montaTorso(mouseClicked);
     montaPernas();
     montaBracos(mouseClicked);
 }
