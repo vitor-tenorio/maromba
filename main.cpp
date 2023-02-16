@@ -117,13 +117,9 @@ void KeyboardFunc(unsigned char key, int x, int y)
         break;
     case 32: // Barra de espaço
         if (heightIndex == 3)
-        {
             heightIndex = 0;
-        }
         else
-        {
             heightIndex += 1;
-        }
         break;
     }
 
