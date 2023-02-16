@@ -49,6 +49,17 @@ void montaBracos(bool mouseClicked)
 
 void montaPernas()
 {
+    Cor green = Cor(0, 100, 0);
+
+    Retangulo coxa1 = Retangulo(Coordenada(400, 950, 350), green, 800, 180, 150);
+    coxa1.desenhar(0, 0, 0, 0);
+    Retangulo canela1 = Retangulo(Coordenada(400, 1110, 230), green, 500, 180, 150);
+    canela1.desenhar(90, 1, 0, 0);
+
+    Retangulo coxa2 = Retangulo(Coordenada(600, 950, 350), green, 800, 180, 150);
+    coxa2.desenhar(0, 0, 0, 0);
+    Retangulo canela2 = Retangulo(Coordenada(600, 1110, 230), green, 500, 180, 150);
+    canela2.desenhar(90, 1, 0, 0);
 }
 
 void montaBoneco(bool mouseClicked)
@@ -60,6 +71,6 @@ void montaBoneco(bool mouseClicked)
     // glTranslatef(-0.65, -0.25, 0);
     montaCabeca();
     montaTorso();
-    montaBracos(mouseClicked);
     montaPernas();
+    montaBracos(mouseClicked);
 }
