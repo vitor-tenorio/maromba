@@ -33,9 +33,9 @@ void display(void)
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    float luzDifusa[] = {0.8f, 0.8f, 0.8f, 1.0f};
+    float luzDifusa[] = {1.0f, 1.0f, 1.0f, 1.0f};
     // float luzEspecular[] = {0.8f, 0.8f, 0.8f, 1.0f};
-    float posicaoLuz[] = {10.0f, 40.0f, 40.0f, 1.0f};
+    float posicaoLuz[] = {180.0f, 180.0f, 180.0f, 1.0f};
     GLfloat mat_shininess[] = {80.0};
     glLightfv(GL_LIGHT1, GL_DIFFUSE, luzDifusa);
     // glLightfv(GL_LIGHT2, GL_SPECULAR, luzEspecular);
@@ -49,13 +49,9 @@ void display(void)
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 
     if (!apagaLuz)
-    {
         glEnable(GL_LIGHT1);
-    }
     else
-    {
         glDisable(GL_LIGHT1);
-    }
 
     glTranslatef(0.0f, 0.0f, dist);
     glRotatef(180, 0.0f, 0.0f, 1.0f);
