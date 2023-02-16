@@ -14,7 +14,7 @@ using namespace std;
 
 bool apagaLuz = true;
 
-GLfloat horzangle = 0, vertangle = 30, dist = -5.0;
+GLfloat horzangle = 0, vertangle = 30, dist = -6.1;
 bool mouseClicked = false;
 
 void mouseCallback(int button, int state, int x, int y)

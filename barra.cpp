@@ -24,4 +24,10 @@ void montaBarra(bool mouseClicked)
         altura = 525;
     Cilindro barra = Cilindro(Coordenada(altura, 380, -250), prata, 100, 100, 3000);
     barra.desenhar(90, 0, 1, 0);
+
+    Cor vermelho = Cor(255, 0, 0);
+    Cilindro anilha1 = Cilindro(Coordenada(altura, 380, 0), vermelho, 500, 500, 75);
+    anilha1.desenhar(90, 0, 1, 0);
+    Cilindro anilha2 = Cilindro(Coordenada(altura, 380, 1000), vermelho, 500, 500, 75);
+    anilha2.desenhar(90, 0, 1, 0);
 }
