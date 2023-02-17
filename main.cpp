@@ -7,7 +7,6 @@
 #include <iostream>
 #include <string.h>
 #include "barra.cpp"
-#include "anilha.c"
 #include "banco.cpp"
 #include "boneco.cpp"
 #include "retangulo.cpp"
