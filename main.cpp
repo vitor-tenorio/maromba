@@ -66,7 +66,6 @@ void atualizarTela(int value)
     std::time_t now = std::time(nullptr);
     double time_diff = std::difftime(now, start_time);
     std::cout << cliques << "/" << cliquesNecessarios << " - " << time_diff << " segundos" << std::endl;
-
     if (time_diff > 10)
     {
         foiEnforcado = true;
@@ -76,8 +75,10 @@ void atualizarTela(int value)
     {
         flexaoFeita = !flexaoFeita;
         cliques = 0;
-        std::cout << "Sucesso - Feito em " << time_diff << " segundos" << std::endl;
-        start_time = std::time(nullptr);
+        if (!flexaoFeita) {
+            std::cout << "Sucesso - Feito em " << time_diff << " segundos" << std::endl;
+            start_time = std::time(nullptr);
+        }
     }
 
     glutPostRedisplay();
