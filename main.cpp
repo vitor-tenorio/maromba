@@ -1,16 +1,16 @@
 #include <cstdlib>
 #include <iostream>
 #include <GL/glut.h>
-#include "casa.c"
+#include <math.h>
+#include <stdbool.h>
+#include <ctime>
+#include <iostream>
+#include <string.h>
 #include "barra.cpp"
 #include "anilha.c"
 #include "banco.cpp"
 #include "boneco.cpp"
 #include "retangulo.cpp"
-#include <math.h>
-#include <stdbool.h>
-#include <ctime>
-#include <iostream>
 
 using namespace std;
 
@@ -112,9 +112,7 @@ void display(void)
     glRotatef(vertangle, 1.0f, 0.0f, 0.0f);
     glRotatef(horzangle, 0.0f, 0.0f, 1.0f);
 
-    //  montaCasa(); // Somente para teste
     montaBarra(flexaoFeita, plateIndex, foiEnforcado);
-    //  montaAnilha();
     montaBanco();
     montaBoneco(flexaoFeita, foiEnforcado);
 
