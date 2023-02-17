@@ -69,15 +69,15 @@ void atualizarTela(int value)
     {
         foiEnforcado = true;
         std::cout << "Foi enforcado ;-;" << std::endl;
-    }
-    else if (cliques >= cliquesNecessarios)
-    {
+    } else if (cliques >= cliquesNecessarios) {
         flexaoFeita = !flexaoFeita;
         cliques = 0;
         if (!flexaoFeita) {
             std::cout << "Sucesso - Feito em " << time_diff << " segundos" << std::endl;
             start_time = std::time(nullptr);
         }
+    }  else if (cliques * 2 >= cliquesNecessarios) {
+        flexaoFeita = true;
     }
 
     glutPostRedisplay();
