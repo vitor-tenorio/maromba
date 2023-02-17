@@ -61,25 +61,38 @@ bool foiEnforcado = false;
 
 std::time_t start_time = std::time(nullptr);
 
+void atualizarTela(int value)
+{
+    std::time_t now = std::time(nullptr);
+    double time_diff = std::difftime(now, start_time);
+    std::cout << cliques << "/" << cliquesNecessarios << " - " << time_diff << " segundos" << std::endl;
+
+    if (time_diff > 10)
+    {
+        foiEnforcado = true;
+        std::cout << "Foi enforcado ;-;" << std::endl;
+    }
+    else if (cliques >= cliquesNecessarios)
+    {
+        flexaoFeita = !flexaoFeita;
+        cliques = 0;
+        std::cout << "Sucesso - Feito em " << time_diff << " segundos" << std::endl;
+        start_time = std::time(nullptr);
+    }
+
+    glutPostRedisplay();
+    if (!foiEnforcado)
+    {
+        glutTimerFunc(300, atualizarTela, 0);
+    }
+}
+
 void mouseCallback(int button, int state, int x, int y)
 {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        if (cliques == 0 && !flexaoFeita) {
-            start_time = std::time(nullptr);
-        }
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
         cliques += 1;
-        std::time_t now = std::time(nullptr);
-        double time_diff = std::difftime(now, start_time);
-        if (time_diff > 5) {
-            foiEnforcado = true;
-        } else if (cliques == cliquesNecessarios) {
-            flexaoFeita = !flexaoFeita;
-            cliques = 0;
-            if (!flexaoFeita) {
-                std::cout << "Feito em " << time_diff << " segundos" << std::endl;
-            }
-        }
-        glutPostRedisplay();    
+        glutPostRedisplay();
     }
 }
 
@@ -163,11 +176,12 @@ void KeyboardFunc(unsigned char key, int x, int y)
         apagaLuz = !apagaLuz;
         break;
     case 'r':
-        if (foiEnforcado) {
-            foiEnforcado = false;
-            cliques = 0;
-            flexaoFeita = false;
-        }
+
+        foiEnforcado = false;
+        cliques = 0;
+        flexaoFeita = false;
+        start_time = std::time(nullptr);
+        glutTimerFunc(300, atualizarTela, 0);
         break;
     case 32: // Barra de espaço
         if (plateIndex == MAX_PLATES)
@@ -213,6 +227,9 @@ void init(void)
 
 int main(int argc, char *argv[])
 {
+    std::cout << "Informe o número de anilhas a ser usado(0 a 3): ";
+    std::cin >> plateIndex;
+    cliquesNecessarios = (1 + plateIndex) * 5;
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
     glutInitWindowSize(500, 500);
@@ -224,6 +241,8 @@ int main(int argc, char *argv[])
     glutKeyboardFunc(KeyboardFunc);
     glutSpecialFunc(SpecialKeys);
     glutDisplayFunc(display);
+    start_time = std::time(nullptr);
+    glutTimerFunc(300, atualizarTela, 0);
     glutMainLoop();
     return 0;
 }
